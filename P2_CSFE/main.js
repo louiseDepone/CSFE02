@@ -16,9 +16,7 @@ app.use(bodyParser.json());
 
 
 app.use("/auth", authRoute)
-app.use("/", usersRoute)
-app.use("/", rolesRoute)
-app.use("/", indicatorsRoute)
+app.use("/", usersRoute,rolesRoute,indicatorsRoute)
 
 app.listen(PORT, () => {
     console.log(`Server Address:`,PORT)
