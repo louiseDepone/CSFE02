@@ -1,0 +1,40 @@
+CREATE DATABASE csfe2_Epis;
+USE csfe2_Epis;
+
+
+
+CREATE TABLE roles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    role_code VARCHAR(255) NOT NULL,
+    role_name VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE ,
+    password VARCHAR(255) NOT NULL,
+    role_id INT,
+    FOREIGN KEY (role_id) REFERENCES roles(id)
+);
+
+
+CREATE TABLE indicator (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    description VARCHAR(255) NOT NULL,
+    user_id INT,
+    evaluation_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+Inserting values into the roles table
+INSERT INTO roles ( role_code, role_name) VALUES
+  ('Admin', 'Administrator'),
+  ('Teacher', 'Teacher'),
+  ('Student', 'Student');
+  
+
+SELECT *  FROM roles;
+SELECT *  FROM users;
+SELECT *  FROM indicator;
